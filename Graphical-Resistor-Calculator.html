@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en-US" xmlns:og="http://ogp.me/ns#"  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- change these meta -->
+<script type="text/javascript">var asyncScripts=[];var asyncFunctions=[];var loadedScripts=[];var scriptsToLoad=0;function execOnReady(func){asyncFunctions.push(func);}</script>
+<title>Graphical Resistor Calculator (4 Band)</title>
+<meta name="robots" content="noodp,noydir"/>
+<meta name="description" content="Graphical Resistor Calculator is a Javascript based Free Software for claculating the registance of registers online or on localhost."/>
+<meta name="keywords" content="Graphical Resistor Calculator, Resistor Calculator, Resistor Calculation,"/>
+<link rel="publisher" href="https://plus.google.com/+Thecustomizewindows/"/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Customize Windows" />
+<meta property="og:description" content="Graphical Resistor Calculator is a Javascript based Free Software for claculating the registance of registers online or on localhost." />
+<meta property="og:site_name" content="Graphical Resistor Calculator (4 Band)" />
+<meta property="article:publisher" content="https://www.facebook.com/TheCustomizeWindows" />
+<meta property="fb:admins" content="100000439872869" />
+<meta property="og:image" content="https://thecustomizewindows.com/TheCustomizeWindows.png" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:description" content="Graphical Resistor Calculator is a Javascript based Free Software for claculating the registance of registers online or on localhost."/>
+<meta name="twitter:title" content="Graphical Resistor Calculator (4 Band)"/>
+<meta name="twitter:site" content="@AbhishekCTRL"/>
+<meta name="twitter:domain" content="The Customize Windows"/>
+<meta name="twitter:image:src" content="https://thecustomizewindows.com/TheCustomizeWindows.png"/>
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"https:\/\/thecustomizewindows.com\/","name":"The Customize Windows","potentialAction":{"@type":"SearchAction","target":"https:\/\/thecustomizewindows.com\/?s={search_term}","query-input":"required name=search_term"}}</script>
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/thecustomizewindows.com","sameAs":["https:\/\/www.facebook.com\/TheCustomizeWindows","https:\/\/in.linkedin.com\/in\/drabhishekghosh","https:\/\/plus.google.com\/+Thecustomizewindows\/","https:\/\/www.youtube.com\/user\/DrAbhishekGhosh","https:\/\/www.pinterest.com\/source\/thecustomizewindows.com\/","https:\/\/twitter.com\/AbhishekCTRL"],"name":"The Customize Windows","logo":"https:\/\/thecustomizewindows.com\/wp-content\/uploads\/2015\/04\/100transparentlogo.png"}</script>
+<script type="text/javascript">if(parent.frames.length>0){parent.location.href=location.href;}</script>
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+       <!-- change these meta up to this line --> 
+    </head>
+      <body>
+      <div align="center">
+     <h2>Graphical Resistor Calculator</h2> 
+     <p>Graphical Resistor Calculator is a Free Software to easily calculate the resistance of registers from the band colors.</p>
+     <p>Simply change the values from the dropdown menus.</p>
+     </div>
+        <!-- this is the calculator-->
+<script language="JavaScript">
+function calcResistance(input) {
+    msv = document.colorSelect.band1.value;
+    lsv = document.colorSelect.band2.value;
+    mult = document.colorSelect.band3.value;
+    tol = document.colorSelect.band4.value;
+    var bgColors = new Array("black", "#583030", "red", "orange", "yellow", "green", "blue", "purple", "gray", "white", "gold", "silver");
+    var fgColors = new Array("white", "white", "white", "black", "black", "white", "white", "white", "black", "black", "black", "black");
+    resistText = msv + lsv; // Appends two strings
+    for (var i=0; i<mult; i++) {
+        resistText += "0";  // Append some 0's
+    }
+    resistText = addCommas(resistText); // Insert commas
+    resistText += " \u2126 \u00B1"; // Add ohm, space, plus/minus sign
+    if (tol == "10")
+        resistText += "5%";
+    else if (tol == "11")
+        resistText += "10%";
+    
+    // Set pull-down menu bg and fg colors:
+    document.colorSelect.band1.style.background = bgColors[parseInt(msv)];
+    document.colorSelect.band1.style.color = fgColors[parseInt(msv)];
+    document.colorSelect.band2.style.background = bgColors[parseInt(lsv)];
+    document.colorSelect.band2.style.color = fgColors[parseInt(lsv)];
+    document.colorSelect.band3.style.background = bgColors[parseInt(mult)];
+    document.colorSelect.band3.style.color = fgColors[parseInt(mult)];
+    document.colorSelect.band4.style.background = bgColors[parseInt(tol)];
+    document.colorSelect.band4.style.color = fgColors[parseInt(tol)];
+    
+    // Update the text box
+    document.getElementById("resistorValue").innerHTML=resistText;
+}
+
+function addCommas(x) {
+// This handy function found here:
+// http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+</script>
+    
+
+<div align="center">
+<table>
+<tr align="center"><td>Band 1</td><td>Band 2</td><td>Band 3</td><td></td><td>Band 4</td></tr>
+<tr align="center"><td>Value 1 (MSV)</td><td>Value 2</td><td>Weight</td><td></td><td>Tolerance</td></tr>
+<tr>
+<form name="colorSelect" method="" action="">
+<td><select name="band1" value="1" onChange="calcResistance(this)" style="width: 150px; color: white; background: #583030;">
+<option value="0" style="color: white; background: black;">Black (0)</option>
+<option value="1" style="color: white; background: #583030;" selected>Brown (1)</option>
+<option value="2" style="color: white; background: red;">Red (2)</option>
+<option value="3" style="color: black; background: orange;">Orange (3)</option>
+<option value="4" style="color: black; background: yellow;">Yellow (4)</option>
+<option value="5" style="color: white; background: green;">Green (5)</option>
+<option value="6" style="color: white; background: blue;">Blue (6)</option>
+<option value="7" style="color: white; background: purple;">Violet (7)</option>
+<option value="8" style="color: white; background: gray;">Gray (8)</option>
+<option value="9" style="color: black; background: white;">White (9)</option>
+</select></td>
+<td><select name="band2" value="0" onChange="calcResistance(this)" style="width: 150px; color: white; background: black;">
+<option value="0" style="color: white; background: black;" selected>Black (0)</option>
+<option value="1" style="color: white; background: #583030;">Brown (1)</option>
+<option value="2" style="color: white; background: red;">Red (2)</option>
+<option value="3" style="color: black; background: orange;">Orange (3)</option>
+<option value="4" style="color: black; background: yellow;">Yellow (4)</option>
+<option value="5" style="color: white; background: green;">Green (5)</option>
+<option value="6" style="color: white; background: blue;">Blue (6)</option>
+<option value="7" style="color: white; background: purple;">Violet (7)</option>
+<option value="8" style="color: white; background: gray;">Gray (8)</option>
+<option value="9" style="color: black; background: white;">White (9)</option>
+</select></td>
+<td><select name="band3" value="2" onChange="calcResistance(this)" style="width: 150px; color: white; background: red;">
+<option value="0" style="color: white; background: black;" selected>Black (1)</option>
+<option value="1" style="color: white; background: #583030;">Brown (10)</option>
+<option value="2" style="color: white; background: red;" selected>Red (100)</option>
+<option value="3" style="color: black; background: orange;">Orange (1k)</option>
+<option value="4" style="color: black; background: yellow;">Yellow (10k)</option>
+<option value="5" style="color: white; background: green;">Green (100k)</option>
+<option value="6" style="color: white; background: blue;">Blue (1M)</option>
+<option value="7" style="color: white; background: purple;">Violet (10M)</option>
+<option value="8" style="color: white; background: gray;">Gray (100M)</option>
+<option value="9" style="color: black; background: white;">White (1G)</option>
+</select></td>
+<td>&nbsp;&nbsp;&nbsp;</td>
+<td><select name="band4" value="0" onChange="calcResistance(this)" style="width: 150px; color: black; background: gold; size:5;">
+<option value="10" style="color: black; background: gold;">Gold (&plusmn; 5%)</option>
+<option value="11" style="color: black; background: silver;">Silver (&plusmn; 10%)</option>
+</select></td></tr>
+<tr><font size="24"><center><td colspan="2" align="right"><h4>Resistance:&nbsp;&nbsp;</h4></td><td colspan="3" align="left"><h4><text id="resistorValue">1,000 &ohm; &plusmn;5%</text></h4></td></center></font></tr>
+</form>
+</table>
+</div>
+<div align="center">
+<h3>Graphical Resistor Calculator Reference Chart</h3>
+
+<p>Standard Table For Calculating 4 Band Resistors' Resistance.</p>
+</div>
+
+    <!-- this is the table -->
+
+<div align="center">
+<table cellpadding=5 bordercolor=#707070 border=1>
+<tr align="center" style="color: black; background: #FFFFE0;"><td>Color</td><td>Digit value</td><td>Multiplier</td><td>Multiplied Out</td><td>Tolerance</td></tr>
+<tr align="center" style="color: white; background: black;"><td>Black</td><td>0</td><td>10<sup>0</sup></td><td>1</td><td></td></tr>
+<tr align="center" style="color: white; background: #583030;"><td>Brown</td><td>1</td><td>10<sup>1</sup></td><td>10</td><td></td></tr>
+<tr align="center" style="color: white; background: red;"><td>Red</td><td>2</td><td>10<sup>2</sup></td><td>100</td><td></td></tr>
+<tr align="center" style="color: black; background: orange;"><td>Orange</td><td>3</td><td>10<sup>3</sup></td><td>1,000</td><td></td></tr>
+<tr align="center" style="color: black; background: yellow;"><td>Yellow</td><td>4</td><td>10<sup>4</sup></td><td>10000</td><td></td></tr>
+<tr align="center" style="color: white; background: green;"><td>Green</td><td>5</td><td>10<sup>5</sup></td><td>100,000</td><td></td></tr>
+<tr align="center" style="color: white; background: blue;"><td>Blue</td><td>6</td><td>10<sup>6</sup></td><td>1,000,000</td><td></td></tr>
+<tr align="center" style="color: white; background: purple;"><td>Violet</td><td>7</td><td>10<sup>7</sup></td><td>10,000,000</td><td></td></tr>
+<tr align="center" style="color: white; background: gray;"><td>Gray</td><td>8</td><td>10<sup>8</sup></td><td>100,000,000</td><td></td></tr>
+<tr align="center" style="color: black; background: white;"><td>White</td><td>9</td><td>10<sup>9</sup></td><td>1,000,000,000</td><td></td></tr>
+<tr align="center" style="color: black; background: gold;"><td>Gold</td><td></td><td><sup></sup></td><td></td><td>&plusmn;5%</td></tr>
+<tr align="center" style="color: black; background: silver;"><td>Silver</td><td></td><td><sup></sup></td><td></td><td>&plusmn;10%</td></tr>
+</table><br>
+</div>  
+  </body>
+</html>
